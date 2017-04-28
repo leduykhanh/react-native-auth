@@ -35,9 +35,7 @@ class TaskList extends Component {
 
           <Body>
             <Title>Your today tasks</Title>
-            {taskList.map(function(item,i){
-              return item;
-            })}
+
           </Body>
 
           <Right>
@@ -48,9 +46,9 @@ class TaskList extends Component {
         </Header>
 
         <Content padder>
-          <Text>
-            {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
-          </Text>
+          {taskList.map(function(item,i){
+              return item;
+            })}
         </Content>
       </Container>
     );
