@@ -8,12 +8,18 @@ export type State = {
 
 const initialState = {
   list: [
-    'React Native Starter Kit',
-    'React Native Router Flux',
-    'NativeBase Easy Grid',
-    'NativeBase',
-    'CodePush',
-    'Redux',
+    'Tasks',
+    'History',
+    'Report',
+  ],
+  tasks:[
+      {name: "Task 1", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+      {name: "Task 2", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+      {name: "Task 3", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+      {name: "Task 4", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+      {name: "Task 5", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+      {name: "Task 6", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'on'},
+
   ],
   selectedIndex: undefined,
 };

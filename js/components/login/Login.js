@@ -145,7 +145,7 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
 
-    setUser: name => {dispatch(setUser(name));Actions.home();},
+    setUser: name => {dispatch(setUser(name));Actions.taskList();},
 
   }
 }

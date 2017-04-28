@@ -9,6 +9,7 @@ import { closeDrawer } from './actions/drawer';
 
 import Login from './components/login/';
 import Home from './components/home/';
+import TaskList from './components/task/';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -53,6 +54,8 @@ class AppNavigator extends Component {
         return <Home />;
       case 'blankPage':
         return <BlankPage />;
+      case 'taskList':
+        return <TaskList />;
       default :
         return <Login />;
     }
@@ -96,6 +99,7 @@ class AppNavigator extends Component {
             <Scene key="login" component={Login} hideNavBar initial />
             <Scene key="home" component={Home} />
             <Scene key="blankPage" component={BlankPage} />
+            <Scene key="taskList" component={TaskList} />
           </Scene>
         </RouterWithRedux>
       </Drawer>
