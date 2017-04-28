@@ -5,9 +5,8 @@ import React, {
 } from 'react';
 import {
   ScrollView,
-  Text,
-  View,
   TextInput,
+  Text,
   TouchableHighlight,
   TouchableOpacity,
   ToastAndroid,
@@ -20,15 +19,19 @@ import {
 import styles from './Style';
 import api, {host, key} from './Server';
 import Register from './Register';
+import { setUser } from '../../actions/user';
+import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+import { Container, Content, Item, Input, Button, Icon, View } from 'native-base';
 
-export default class extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       data: {
-           email: undefined,
-        password: undefined,
+           username: "leejangkoo@gmail.com",
+            password: "Ngan123!",
             role: 0
       },
       loading: false
@@ -37,8 +40,8 @@ export default class extends Component {
 
   render() {
     let fields = [
-      {ref: 'email', placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: [styles.inputText]},
-      {ref: 'password', placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: [styles.inputText]},
+      {ref: 'username',value:'leejangkoo@gmail.com', placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: [styles.inputText]},
+      {ref: 'password', value:'Ngan123!',placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: [styles.inputText]},
     ];
 
     return (
@@ -46,12 +49,14 @@ export default class extends Component {
         <TouchableOpacity activeOpacity={1} style={styles.titleContainer}>
           <Text style={styles.title}>{'LOGIN'}</Text>
         </TouchableOpacity>
-        <View key={'email'} style={styles.inputContainer}>
-          <TextInput {...fields[0]} onFocus={() => this.onFocus({...fields[0]})} onChangeText={(text) => this.state.data.email = text} />
-        </View>
-        <View key={'password'} style={styles.inputContainer}>
-          <TextInput {...fields[1]} onFocus={() => this.onFocus({...fields[1]})} onChangeText={(text) => this.state.data.password = text} />
-        </View>
+        <Item key={'username'} style={styles.inputContainer}>
+          <Icon active name="person" />
+          <Input {...fields[0]} onFocus={() => this.onFocus({...fields[0]})} onChangeText={(text) => this.state.data.username = text} />
+        </Item>
+        <Item key={'password'} style={styles.inputContainer}>
+          <Icon name="unlock" />
+          <Input {...fields[1]} onFocus={() => this.onFocus({...fields[1]})} onChangeText={(text) => this.state.data.password = text} />
+        </Item>
         <TouchableHighlight style={this.state.loading ? styles.buttonDisabled : styles.button} underlayColor={'#2bbbad'} onPress={() => this.onSubmit()}>
           <Text style={styles.buttonText}>{this.state.loading ? 'Please Wait . . .' : 'Submit'}</Text>
         </TouchableHighlight>
@@ -106,6 +111,8 @@ export default class extends Component {
       })
       .done(() => {
         this.setState({loading: false});
+        this.props.setUser(this.state.username);
+        ToastAndroid.show("Logging in", ToastAndroid.LONG);
       });
   }
 
@@ -135,3 +142,17 @@ export default class extends Component {
     }
   }
 }
+const mapDispatchToProps = (dispatch,ownProps) => {
+  return {
+
+    setUser: name => {dispatch(setUser(name));Actions.home();},
+
+  }
+}
+const mapStateToProps = (state, ownProps) => {
+
+    return {
+
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

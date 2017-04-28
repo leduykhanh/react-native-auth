@@ -1,6 +1,8 @@
 'use strict';
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const deviceHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   titleContainer: {
@@ -67,5 +69,27 @@ export default StyleSheet.create({
   inputText: {
     backgroundColor: '#FFFFFF',
     height: 60
+  },
+
+  shadow: {
+    flex: 1,
+    width: null,
+    height: null,
+  },
+  bg: {
+    flex: 1,
+    marginTop: deviceHeight / 1.75,
+    paddingTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 30,
+    bottom: 0,
+  },
+  input: {
+    marginBottom: 20,
+  },
+  btn: {
+    marginTop: 20,
+    alignSelf: 'center',
   }
 });
