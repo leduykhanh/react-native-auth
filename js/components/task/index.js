@@ -29,7 +29,7 @@ class TaskList extends Component {
     let taskList =  Array();
     for (let i=0; i < this.props.tasks.length; i++){
       let item = this.props.tasks[i];
-      taskList.push(<TaskRow key={i} item={item}/>)
+      taskList.push(<TaskRow  index={i} item={item} key={i}/>)
             }
     return (
       <Container style={styles.container}>

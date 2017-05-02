@@ -9,5 +9,11 @@ export default{
   },
   rowView:{
     flexDirection: 'row'
+  },
+  on : {
+    backgroundColor: '#FFF',
+  },
+  off : {
+    backgroundColor: 'rgba(0,0,0,0.1)',
   }
 };
