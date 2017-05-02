@@ -4,7 +4,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const deviceHeight = Dimensions.get('window').height;
 
-export default StyleSheet.create({
+export default {
   titleContainer: {
     backgroundColor: '#00BFA5',
     justifyContent: 'center',
@@ -92,4 +92,4 @@ export default StyleSheet.create({
     marginTop: 20,
     alignSelf: 'center',
   }
-});
+};

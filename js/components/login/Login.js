@@ -40,8 +40,8 @@ class Login extends Component {
 
   render() {
     let fields = [
-      {ref: 'username',value:'leejangkoo@gmail.com', placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: [styles.inputText]},
-      {ref: 'password', value:'Ngan123!',placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: [styles.inputText]},
+      {ref: 'username',value:'leejangkoo@gmail.com', placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: styles.inputText},
+      {ref: 'password', value:'Ngan123!',placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: styles.inputText},
     ];
 
     return (

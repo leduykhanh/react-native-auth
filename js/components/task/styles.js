@@ -7,4 +7,7 @@ export default{
   container: {
     backgroundColor: '#FBFAFA',
   },
+  rowView:{
+    flexDirection: 'row'
+  }
 };
