@@ -10,6 +10,7 @@ import { closeDrawer } from './actions/drawer';
 import Login from './components/login/';
 import Home from './components/home/';
 import TaskList from './components/task/';
+import NewTask from './components/task/newTask';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -56,6 +57,8 @@ class AppNavigator extends Component {
         return <BlankPage />;
       case 'taskList':
         return <TaskList />;
+      case 'newTask':
+        return <NewTask />;
       default :
         return <Login />;
     }
@@ -100,6 +103,7 @@ class AppNavigator extends Component {
             <Scene key="home" component={Home} />
             <Scene key="blankPage" component={BlankPage} />
             <Scene key="taskList" component={TaskList} />
+            <Scene key="newTask" component={NewTask} />
           </Scene>
         </RouterWithRedux>
       </Drawer>

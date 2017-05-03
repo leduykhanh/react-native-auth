@@ -14,7 +14,7 @@ import {
   PublisherBanner,
   AdMobRewarded
 } from 'react-native-admob'
-
+import { setTask,updateTimeSpent,pauseTask } from '../../actions/task';
 class TaskList extends Component {
 
   static propTypes = {
@@ -24,14 +24,21 @@ class TaskList extends Component {
     tasks: React.PropTypes.arrayOf(React.PropTypes.object),
     openDrawer: React.PropTypes.func,
   }
-
+  constructor() {
+        super();
+        this.interval = null;
+    }
+  componentDidMount() {
+        this.interval = setInterval(this.props.updateTimeSpent, 2000);
+    }
   render() {
     const { props: { name, index, list, tasks } } = this;
-    console.log(tasks);
+    // console.log(tasks[0]);
     let taskList =  Array();
     for (let i=0; i < tasks.length; i++){
       let item = tasks[i];
-      taskList.push(<TaskRow  index={i} item={item} key={i}/>)
+      if (item.status != "finished")
+        taskList.push(<TaskRow  index={i} item={item} setTask={this.props.setTask} pauseTask={this.props.pauseTask} key={i}/>)
             }
     return (
       <Container style={styles.container}>
@@ -66,7 +73,7 @@ class TaskList extends Component {
         </Content>
         <ActionButton
           buttonColor="rgba(231,76,60,1)"
-          onPress={() => { console.log("hi")}}
+          onPress={() => { Actions.newTask()}}
         />
       </Container>
     );
@@ -76,6 +83,9 @@ class TaskList extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
+    updateTimeSpent: () => dispatch(updateTimeSpent()),
+    setTask: index => {dispatch(setTask(index));},
+    pauseTask: index => {dispatch(pauseTask(index));},
   };
 }
 

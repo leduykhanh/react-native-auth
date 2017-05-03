@@ -2,52 +2,60 @@
  * Created by User on 4/28/2017.
  */
 import React, { Component } from 'react';
-import { Container, Content, Item, Input, Icon, View,Text } from 'native-base';
+import { Container, Content, Item, Input, Icon, View,Text,Button ,Badge} from 'native-base';
 import {
   ToastAndroid
 
 } from 'react-native'
-import { Button } from 'react-native-material-design';
+// import { Button } from 'react-native-material-design';
 import styles from './styles'
 import { setTask } from '../../actions/task';
 import { connect } from 'react-redux';
+import {toDateString, toTimeString} from '../../utils/time'
 
 class TaskList extends Component {
   constructor(props) {
     super(props);
       }
     render(){
-        let {index,item} = this.props;
+        let {index,item,setTask,pauseTask} = this.props;
         let style = item.status == "on"?styles.on:styles.off;
         return (
             <View style={style}>
                 <Text>{item.name}</Text>
                 <View style={styles.rowView}>
-                    <Text>Started at {item.startTime + ""}</Text>
-                    <Text>{item.timeSpent} hours spent</Text>
+                    <Text>Started at {toDateString(item.startTime,"MMM DD : HH") + ""},</Text>
+                     <Badge primary><Text>{toTimeString(item.timeSpent)}</Text></Badge><Text> spent</Text>
                 </View>
                 <View style={styles.rowView}>
-                    <Button value="PAUSE" onPress={() => {this.props.setTask(index)} } />
-                    <Button value="RESUME" onPress={() => {this.props.setTask(index)} } />
-                    <Button value="FINISH" onPress={() => {this.props.setTask(index)} } />
+                    {item.status == "on" ?
+                        <Button success style={styles.green} title="PAUSE" onPress={() => {pauseTask(index)} }><Text>PAUSE</Text></Button>
+                        : <Text></Text>
+                    }
+                    {item.status == "off"?
+                        <Button success style={styles.green} title="START" onPress={() => {setTask(index)} }><Text>START</Text></Button>
+                        :<Text></Text>
+                    }
+                    <Button danger style={styles.red} title="FINISH" onPress={() => {setTask(index)} } ><Text>FINISH</Text></Button>
                 </View>
             </View>
         )
     }
 }
-const mapDispatchToProps = (dispatch,ownProps) => {
-  return {
-
-    setTask: index => {dispatch(setTask(index));
-    //    ToastAndroid.show('' + index, ToastAndroid.SHORT);
-    },
-
-  }
-}
-const mapStateToProps = (state, ownProps) => {
-
-    return {
-
-    };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+// const mapDispatchToProps = (dispatch,ownProps) => {
+//   return {
+//
+//     setTask: index => {dispatch(setTask(index));
+//     //    ToastAndroid.show('' + index, ToastAndroid.SHORT);
+//     },
+//
+//   }
+// }
+// const mapStateToProps = (state, ownProps) => {
+//
+//     return {
+//
+//     };
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default TaskList;

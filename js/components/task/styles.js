@@ -8,12 +8,25 @@ export default{
     backgroundColor: '#FBFAFA',
   },
   rowView:{
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderRadius: 5
+  },
+  btn : {
+    borderRadius: 5,
+    margin: 5
   },
   on : {
     backgroundColor: '#FFF',
   },
   off : {
-    backgroundColor: 'rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(0,0,0,0.2)',
+  },
+  green : {
+    //backgroundColor: 'green',
+    // color:'green'
+  },
+  red : {
+    //backgroundColor: 'red',
+    // color:'red'
   }
 };
