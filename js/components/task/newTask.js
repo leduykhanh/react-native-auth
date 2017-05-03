@@ -32,7 +32,7 @@ class NewTask extends Component {
                                 <Label>Name</Label>
                                 <Input onChange={this.changeName.bind(this)} />
                             </Item>
-                            <Button onPress={this.submit.bind(this)}>
+                            <Button full onPress={() => this.submit()}>
                                 <Text>Add </Text>
                             </Button>
                         </Form>

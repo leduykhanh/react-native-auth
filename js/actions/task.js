@@ -4,7 +4,7 @@ import type { Action } from './types';
 export const SET_TASK = 'SET_TASK';
 export const UPDATE_TIME_SPENT = 'UPDATE_TIME_SPENT';
 export const PAUSE_TASK = 'PAUSE_TASK';
-export const NEW_TASK = 'PAUSE_TASK';
+export const NEW_TASK = 'NEW_TASK';
 
 export function setTask(index:number):Action {
   return {
