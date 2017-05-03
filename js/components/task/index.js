@@ -21,14 +21,16 @@ class TaskList extends Component {
     name: React.PropTypes.string,
     index: React.PropTypes.number,
     list: React.PropTypes.arrayOf(React.PropTypes.string),
+    tasks: React.PropTypes.arrayOf(React.PropTypes.object),
     openDrawer: React.PropTypes.func,
   }
 
   render() {
-    const { props: { name, index, list } } = this;
+    const { props: { name, index, list, tasks } } = this;
+    console.log(tasks);
     let taskList =  Array();
-    for (let i=0; i < this.props.tasks.length; i++){
-      let item = this.props.tasks[i];
+    for (let i=0; i < tasks.length; i++){
+      let item = tasks[i];
       taskList.push(<TaskRow  index={i} item={item} key={i}/>)
             }
     return (
@@ -41,7 +43,7 @@ class TaskList extends Component {
           </Left>
 
           <Body>
-            <Title>Your today tasks</Title>
+            <Title>Hi {name}, Your today tasks</Title>
 
           </Body>
 
@@ -81,7 +83,7 @@ const mapStateToProps = state => ({
   name: state.user.name,
   index: state.list.selectedIndex,
   list: state.list.list,
-  tasks: state.list.tasks,
+  tasks: state.task.tasks,
 });
 
 

@@ -7,7 +7,7 @@ import list from './list';
 import task from './task';
 
 export default combineReducers({
-  state: (state = {}) => state,
+  // state: (state = {}) => state,
   drawer,
   user,
   list,

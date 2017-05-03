@@ -38,7 +38,9 @@ class TaskList extends Component {
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
 
-    setTask: index => {dispatch(setTask(index));ToastAndroid.show('' + index, ToastAndroid.SHORT);},
+    setTask: index => {dispatch(setTask(index));
+    //    ToastAndroid.show('' + index, ToastAndroid.SHORT);
+    },
 
   }
 }

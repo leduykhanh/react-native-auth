@@ -102,7 +102,9 @@ class Login extends Component {
       })
       .then((responseData) => {
         console.log(responseData);
-        ToastAndroid.show(JSON.stringify(responseData), ToastAndroid.LONG);
+        //ToastAndroid.show(JSON.stringify(responseData), ToastAndroid.LONG);
+        ToastAndroid.show(responseData.user.email, ToastAndroid.LONG);
+        this.props.setUser(responseData.user.email);
         this.onSuccess(responseData).done();
       })
       .catch((error) => {
@@ -111,7 +113,7 @@ class Login extends Component {
       })
       .done(() => {
         this.setState({loading: false});
-        this.props.setUser(this.state.username);
+        // this.props.setUser(this.state.username);
         ToastAndroid.show("Logging in", ToastAndroid.LONG);
       });
   }
