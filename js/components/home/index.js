@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right,Badge } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { setIndex } from '../../actions/list';
@@ -36,7 +36,7 @@ class Home extends Component {
           </Left>
 
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'Home'}</Title>
+            <Badge><Text>{this.props.tasks.length}</Text></Badge><Text> tasks</Text>
           </Body>
 
           <Right>
@@ -47,18 +47,7 @@ class Home extends Component {
         </Header>
 
         <Content>
-          <Grid style={styles.mt}>
-            {this.props.list.map((item, i) =>
-              <Row key={i}>
-                <TouchableOpacity
-                  style={styles.row}
-                  onPress={() => this.newPage(i)}
-                >
-                  <Text style={styles.text}>{item}</Text>
-                </TouchableOpacity>
-              </Row>
-            )}
-          </Grid>
+          {this.props.children.map((scene,i) => React.createElement(scene.component,{key:i}))}
         </Content>
       </Container>
     );
@@ -75,6 +64,7 @@ function bindAction(dispatch) {
 const mapStateToProps = state => ({
   name: state.user.name,
   list: state.list.list,
+  tasks: state.task.tasks,
 });
 
 export default connect(mapStateToProps, bindAction)(Home);

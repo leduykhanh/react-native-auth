@@ -27,6 +27,7 @@ export function updateTimeSpent():Action {
 }
 
 export function newTask(item:object):Action {
+  // console.log(item);
   return {
     type: NEW_TASK,
     payload: item,

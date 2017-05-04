@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions ,ActionConst} from 'react-native-router-flux';
 import ActionButton from 'react-native-action-button';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body } from 'native-base';
 
@@ -41,26 +41,6 @@ class TaskList extends Component {
         taskList.push(<TaskRow  index={i} item={item} setTask={this.props.setTask} pauseTask={this.props.pauseTask} key={i}/>)
             }
     return (
-      <Container style={styles.container}>
-        <Header>
-          <Left>
-            <Button text="" transparent onPress={() => Actions.pop()}>
-              <Icon name="ios-arrow-back" />
-            </Button>
-          </Left>
-
-          <Body>
-            <Title>Hi {name}, Your today tasks</Title>
-
-          </Body>
-
-          <Right>
-            <Button text=""  transparent onPress={this.props.openDrawer}>
-              <Icon name="ios-menu" />
-            </Button>
-          </Right>
-        </Header>
-
         <Content padder>
           <AdMobBanner
             bannerSize="fullBanner"
@@ -70,12 +50,13 @@ class TaskList extends Component {
           {taskList.map(function(item,i){
               return item;
             })}
+            <ActionButton
+              buttonColor="rgba(231,76,60,1)"
+              onPress={() => { Actions.newTask()}}
+            />
         </Content>
-        <ActionButton
-          buttonColor="rgba(231,76,60,1)"
-          onPress={() => { Actions.newTask()}}
-        />
-      </Container>
+
+
     );
   }
 }

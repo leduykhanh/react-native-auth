@@ -21,27 +21,9 @@ class BlankPage extends Component {
 
     return (
       <Container style={styles.container}>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => Actions.pop()}>
-              <Icon name="ios-arrow-back" />
-            </Button>
-          </Left>
-
-          <Body>
-            <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
-          </Body>
-
-          <Right>
-            <Button transparent onPress={this.props.openDrawer}>
-              <Icon name="ios-menu" />
-            </Button>
-          </Right>
-        </Header>
-
         <Content padder>
           <Text>
-            {(!isNaN(index)) ? list[index] : 'Create Something Awesome . . .'}
+            {(!isNaN(index)) ? list[index] : 'blannk pageeeeeeeeeee'}
           </Text>
         </Content>
       </Container>

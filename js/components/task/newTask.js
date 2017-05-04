@@ -25,25 +25,25 @@ class NewTask extends Component {
     render(){
 
         return (
-            <Container>
-                    <Content>
-                        <Form>
-                            <Item floatingLabel>
-                                <Label>Name</Label>
-                                <Input onChange={this.changeName.bind(this)} />
-                            </Item>
-                            <Button full onPress={() => this.submit()}>
-                                <Text>Add </Text>
-                            </Button>
-                        </Form>
-                    </Content>
-                </Container>
+
+            <Content>
+                <Item floatingLabel>
+                    <Label>Name</Label>
+                    <Input onChangeText={(text) => this.changeName(text)} />
+                </Item>
+                <Button full onPress={() => this.submit()}>
+                    <Text>Add </Text>
+                </Button>
+            </Content>
         )
     }
 }
 function bindAction(dispatch) {
   return {
-    newTask: item => {dispatch(newTask(item));},
+    newTask: item => {
+        dispatch(newTask(item));
+        // console.log(item);
+    },
   };
 }
 

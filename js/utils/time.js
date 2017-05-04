@@ -5,7 +5,7 @@ import moment from 'moment'
 export const toDateString = (date,newFormat)=>
 {
     let _date = moment(date);
-    return _date.format(newFormat)
+    return _date.format(newFormat).toString()
 }
 export const toTimeString = (timeInput) =>{
     let timeValue = timeInput;
@@ -16,10 +16,10 @@ export const toTimeString = (timeInput) =>{
     }
     timeValue -= days * 3600;
     let hours = Math.floor(timeValue/60);
-    if (days > 0) {
+    if (hours > 0) {
         stringR += hours + " hours "
     }
-    timeValue -= days * 60;
+    timeValue -= hours * 60;
     stringR += timeValue + " mins "
     return stringR;
 }

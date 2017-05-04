@@ -14,6 +14,7 @@ import NewTask from './components/task/newTask';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
+import { Actions,ActionConst } from 'react-native-router-flux';
 
 
 const RouterWithRedux = connect()(Router);
@@ -98,12 +99,12 @@ class AppNavigator extends Component {
           barStyle="default"
         />
         <RouterWithRedux>
-          <Scene key="root">
+          <Scene key="root" >
             <Scene key="login" component={Login} hideNavBar initial />
-            <Scene key="home" component={Home} />
-            <Scene key="blankPage" component={BlankPage} />
-            <Scene key="taskList" component={TaskList} />
-            <Scene key="newTask" component={NewTask} />
+            <Scene key="home" component={Home} >
+              <Scene type={ActionConst.RESET} key="taskList" component={TaskList} />
+              <Scene type={ActionConst.RESET} key="newTask" component={NewTask} />
+            </Scene>
           </Scene>
         </RouterWithRedux>
       </Drawer>

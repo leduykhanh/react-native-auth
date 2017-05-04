@@ -21,7 +21,7 @@ import api, {host, key} from './Server';
 import Register from './Register';
 import { setUser } from '../../actions/user';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
+import { Actions,ActionConst } from 'react-native-router-flux';
 import { Container, Content, Item, Input, Button, Icon, View } from 'native-base';
 
 class Login extends Component {
@@ -101,7 +101,7 @@ class Login extends Component {
         return response.json();
       })
       .then((responseData) => {
-        console.log(responseData);
+        // console.log(responseData);
         //ToastAndroid.show(JSON.stringify(responseData), ToastAndroid.LONG);
         ToastAndroid.show(responseData.user.email, ToastAndroid.LONG);
         this.props.setUser(responseData.user.email);
@@ -147,7 +147,11 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
 
-    setUser: name => {dispatch(setUser(name));Actions.taskList();},
+    setUser: name => {
+      dispatch(setUser(name));
+      Actions.home({type:ActionConst.RESET});
+      Actions.taskList();
+    },
 
   }
 }
