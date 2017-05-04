@@ -18,4 +18,8 @@ export default {
   mt: {
     marginTop: 18,
   },
+    rowView:{
+    flexDirection: 'row',
+    borderRadius: 5
+  },
 };

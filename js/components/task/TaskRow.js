@@ -21,7 +21,7 @@ class TaskList extends Component {
         let {index,item,setTask,pauseTask} = this.props;
         let style = item.status == "on"?styles.on:styles.off;
         return (
-            <View style={style}>
+            <View style={style} padder>
                 <Text>{item.name}</Text>
                 <View style={styles.rowView}>
                     <Text>Started at {toDateString(item.startTime,"MMM DD : HH") + ""},</Text>

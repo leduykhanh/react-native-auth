@@ -26,6 +26,7 @@ class Home extends Component {
   }
 
   render() {
+    let onGoingCount = tasks.filter(function(x){return x.status=="on" || x.status=="off"}).length;
     return (
       <Container style={styles.container}>
         <Header>
@@ -35,8 +36,8 @@ class Home extends Component {
             </Button>
           </Left>
 
-          <Body>
-            <Badge><Text>{this.props.tasks.length}</Text></Badge><Text> tasks</Text>
+          <Body style={styles.rowView}>
+            <Badge><Text>{onGoingCount}</Text></Badge><Text> tasks</Text>
           </Body>
 
           <Right>

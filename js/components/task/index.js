@@ -37,11 +37,11 @@ class TaskList extends Component {
     let taskList =  Array();
     for (let i=0; i < tasks.length; i++){
       let item = tasks[i];
-      if (item.status != "finished")
+      if (item.status != "finished" && item.status != "later")
         taskList.push(<TaskRow  index={i} item={item} setTask={this.props.setTask} pauseTask={this.props.pauseTask} key={i}/>)
             }
     return (
-        <Content padder>
+        <Content>
           <AdMobBanner
             bannerSize="fullBanner"
             adUnitID="ca-app-pub-8010283700967425/7369304597"

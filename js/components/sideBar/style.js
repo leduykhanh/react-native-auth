@@ -10,5 +10,6 @@ export default {
     paddingRight: 0,
     paddingTop: 30,
     backgroundColor: '#fff',
+    flexDirection: 'row',
   },
 };

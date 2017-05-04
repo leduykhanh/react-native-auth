@@ -37,11 +37,16 @@ class Login extends Component {
       loading: false
     };
   }
-
+  componentWillMount(){
+    if(this.props.name){
+      Actions.home({type:ActionConst.RESET});
+      Actions.taskList();
+    }
+  }
   render() {
     let fields = [
-      {ref: 'username',value:'leejangkoo@gmail.com', placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: styles.inputText},
-      {ref: 'password', value:'Ngan123!',placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: styles.inputText},
+      {ref: 'username',value:this.state.data.username, placeholder: 'Email', keyboardType: 'email-address', secureTextEntry: false, style: styles.inputText},
+      {ref: 'password', value:this.state.data.password,placeholder: 'Password', keyboardType: 'default', secureTextEntry: true, style: styles.inputText},
     ];
 
     return (
@@ -103,7 +108,7 @@ class Login extends Component {
       .then((responseData) => {
         // console.log(responseData);
         //ToastAndroid.show(JSON.stringify(responseData), ToastAndroid.LONG);
-        ToastAndroid.show(responseData.user.email, ToastAndroid.LONG);
+        // ToastAndroid.show(responseData.user.email, ToastAndroid.LONG);
         this.props.setUser(responseData.user.email);
         this.onSuccess(responseData).done();
       })
@@ -158,7 +163,7 @@ const mapDispatchToProps = (dispatch,ownProps) => {
 const mapStateToProps = (state, ownProps) => {
 
     return {
-
+      name: state.user.name,
     };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
