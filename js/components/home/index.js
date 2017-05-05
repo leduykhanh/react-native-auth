@@ -26,6 +26,7 @@ class Home extends Component {
   }
 
   render() {
+    const { props: { name, tasks } } = this;
     let onGoingCount = tasks.filter(function(x){return x.status=="on" || x.status=="off"}).length;
     return (
       <Container style={styles.container}>
@@ -64,7 +65,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   name: state.user.name,
-  list: state.list.list,
   tasks: state.task.tasks,
 });
 

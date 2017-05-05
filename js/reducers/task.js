@@ -3,7 +3,7 @@
 status : off, on, finished, later
  */
 import type { Action } from '../actions/types';
-import { SET_TASK ,UPDATE_TIME_SPENT,PAUSE_TASK,NEW_TASK} from '../actions/task';
+import { SET_TASK ,UPDATE_TIME_SPENT,PAUSE_TASK,NEW_TASK,LATER_TASK,FINISH_TASK} from '../actions/task';
 
 export type State = {
     tasks: object,
@@ -26,7 +26,7 @@ export default function (state:State = initialState, action:Action) {
       var tasks = [...state.tasks];
        // console.log(state);
       for(let i=0; i < tasks.length; i++){
-          tasks[i].status = "off";
+          if (tasks[i].status == "on") tasks[i].status = "off";
           // tasks[i].name = "off" + i;
           if (i==action.payload) {
             tasks[i].status = "on";
@@ -56,6 +56,24 @@ export default function (state:State = initialState, action:Action) {
   if (action.type === PAUSE_TASK) {
       var tasks = [...state.tasks];
       tasks[action.payload].status = "off";
+
+      return {
+          ...state,
+          tasks: tasks
+      }
+  }
+      if (action.type === FINISH_TASK) {
+      var tasks = [...state.tasks];
+      tasks[action.payload].status = "finished";
+
+      return {
+          ...state,
+          tasks: tasks
+      }
+  }
+      if (action.type === LATER_TASK) {
+      var tasks = [...state.tasks];
+      tasks[action.payload].status = "later";
 
       return {
           ...state,

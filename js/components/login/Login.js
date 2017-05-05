@@ -23,6 +23,7 @@ import { setUser } from '../../actions/user';
 import { connect } from 'react-redux';
 import { Actions,ActionConst } from 'react-native-router-flux';
 import { Container, Content, Item, Input, Button, Icon, View } from 'native-base';
+import {LoginButton,LoginManager} from 'react-native-fbsdk';
 
 class Login extends Component {
   constructor(props) {
@@ -42,6 +43,19 @@ class Login extends Component {
       Actions.home({type:ActionConst.RESET});
       Actions.taskList();
     }
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      function(result) {
+        if (result.isCancelled) {
+          alert('Login was cancelled');
+        } else {
+          alert('Login was successful with permissions: '
+            + result.grantedPermissions.toString());
+        }
+      },
+      function(error) {
+        alert('Login failed with error: ' + error);
+      }
+    );
   }
   render() {
     let fields = [
@@ -51,6 +65,22 @@ class Login extends Component {
 
     return (
       <ScrollView ref={'loginFormC'} {...this.props}>
+        <View full>
+          <LoginButton
+            publishPermissions={["publish_actions"]}
+            onLoginFinished={
+              (error, result) => {
+                if (error) {
+                  alert("Login failed with error: " + result.error);
+                } else if (result.isCancelled) {
+                  alert("Login was cancelled");
+                } else {
+                  alert("Login was successful with permissions: " + result.grantedPermissions)
+                }
+              }
+            }
+            onLogoutFinished={() => alert("User logged out")}/>
+          </View>
         <TouchableOpacity activeOpacity={1} style={styles.titleContainer}>
           <Text style={styles.title}>{'LOGIN'}</Text>
         </TouchableOpacity>

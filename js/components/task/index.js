@@ -14,7 +14,7 @@ import {
   PublisherBanner,
   AdMobRewarded
 } from 'react-native-admob'
-import { setTask,updateTimeSpent,pauseTask } from '../../actions/task';
+import { setTask,updateTimeSpent,pauseTask,finishTask,laterTask } from '../../actions/task';
 class TaskList extends Component {
 
   static propTypes = {
@@ -33,12 +33,16 @@ class TaskList extends Component {
     }
   render() {
     const { props: { name, index, list, tasks } } = this;
-    // console.log(tasks[0]);
+    // console.log(tasks);
     let taskList =  Array();
     for (let i=0; i < tasks.length; i++){
       let item = tasks[i];
       if (item.status != "finished" && item.status != "later")
-        taskList.push(<TaskRow  index={i} item={item} setTask={this.props.setTask} pauseTask={this.props.pauseTask} key={i}/>)
+        taskList.push(<TaskRow  index={i} item={item} setTask={this.props.setTask}
+                                pauseTask={this.props.pauseTask}
+                                laterTask={this.props.laterTask}
+                                finishTask={this.props.finishTask}
+                                key={i}/>)
             }
     return (
         <Content>
@@ -67,6 +71,8 @@ function bindAction(dispatch) {
     updateTimeSpent: () => dispatch(updateTimeSpent()),
     setTask: index => {dispatch(setTask(index));},
     pauseTask: index => {dispatch(pauseTask(index));},
+    finishTask: index => {dispatch(finishTask(index));},
+    laterTask: index => {dispatch(laterTask(index));},
   };
 }
 

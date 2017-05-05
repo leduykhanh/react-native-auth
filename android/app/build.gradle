@@ -88,7 +88,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "com.nativestarterkit"
+        applicationId "com.task.jangkoo"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-fbsdk')
     compile project(':RNAdMob')
     compile project(':react-native-code-push')
     compile fileTree(dir: "libs", include: ["*.jar"])

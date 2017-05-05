@@ -9,7 +9,6 @@ import {
 } from 'react-native'
 // import { Button } from 'react-native-material-design';
 import styles from './styles'
-import { setTask } from '../../actions/task';
 import { connect } from 'react-redux';
 import {toDateString, toTimeString} from '../../utils/time'
 
@@ -18,7 +17,7 @@ class TaskList extends Component {
     super(props);
       }
     render(){
-        let {index,item,setTask,pauseTask} = this.props;
+        let {index,item,setTask,pauseTask,laterTask, finishTask} = this.props;
         let style = item.status == "on"?styles.on:styles.off;
         return (
             <View style={style} padder>
@@ -36,7 +35,8 @@ class TaskList extends Component {
                         <Button success style={styles.green} title="START" onPress={() => {setTask(index)} }><Text>START</Text></Button>
                         :<Text></Text>
                     }
-                    <Button danger style={styles.red} title="FINISH" onPress={() => {setTask(index)} } ><Text>FINISH</Text></Button>
+                    <Button danger style={styles.red} title="FINISH" onPress={() => {finishTask(index)} } ><Text>FINISH</Text></Button>
+                    <Button primary style={styles.red} title="LATER" onPress={() => {laterTask(index)} } ><Text>LATER</Text></Button>
                 </View>
             </View>
         )

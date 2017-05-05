@@ -25,7 +25,7 @@ class SideBar extends Component {
       let {props:{tasks}} = this;
       let onGoingCount = tasks.filter(function(x){return x.status=="on" || x.status=="off"}).length;
       let laterCount = tasks.filter(function(x){return x.status=="later"}).length;
-      let finsihedCount = tasks.filter(function(x){return x.status=="finish"}).length;
+      let finsihedCount = tasks.filter(function(x){return x.status=="finished"}).length;
     return (
       <Content style={styles.sidebar} >
         <ListItem button onPress={() => { Actions.home(); this.props.closeDrawer(); }} >
