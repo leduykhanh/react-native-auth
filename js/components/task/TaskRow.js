@@ -12,7 +12,7 @@ import styles from './styles'
 import { connect } from 'react-redux';
 import {toDateString, toTimeString} from '../../utils/time'
 
-class TaskList extends Component {
+class TaskRow extends Component {
   constructor(props) {
     super(props);
       }
@@ -58,4 +58,4 @@ class TaskList extends Component {
 //     };
 // }
 // export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
-export default TaskList;
+export default TaskRow;

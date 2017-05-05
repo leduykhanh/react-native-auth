@@ -13,6 +13,7 @@ import TaskList from './components/task/';
 import NewTask from './components/task/newTask';
 import LaterTask from './components/task/laterTask';
 import FinishTask from './components/task/finishedTask';
+import Report from './components/task/report';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -66,6 +67,8 @@ class AppNavigator extends Component {
         return <FinishTask />;
       case 'newTask':
         return <NewTask />;
+      case 'report':
+        return <Report />;
       default :
         return <Login />;
     }
@@ -112,6 +115,7 @@ class AppNavigator extends Component {
               <Scene type={ActionConst.RESET} key="newTask" component={NewTask} />
               <Scene type={ActionConst.RESET} key="laterTask" component={LaterTask} />
               <Scene type={ActionConst.RESET} key="finishTask" component={FinishTask} />
+              <Scene type={ActionConst.RESET} key="report" component={Report} />
             </Scene>
           </Scene>
         </RouterWithRedux>

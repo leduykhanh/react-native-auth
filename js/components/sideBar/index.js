@@ -40,6 +40,9 @@ class SideBar extends Component {
         <ListItem button onPress={() => { Actions.taskList(); this.props.closeDrawer(); }} >
           <Text>Tasks</Text><Badge><Text>{onGoingCount}</Text></Badge>
         </ListItem>
+       <ListItem button onPress={() => { Actions.report(); this.props.closeDrawer(); }} >
+          <Text>Report</Text><Badge><Text>new</Text></Badge>
+        </ListItem>
       </Content>
     );
   }

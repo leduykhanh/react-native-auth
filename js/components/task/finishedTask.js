@@ -6,6 +6,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
+import FinishedTaskTow from './finishedTaskRow'
 
 class FinishedTask extends Component {
 
@@ -18,10 +19,21 @@ class FinishedTask extends Component {
 
   render() {
     const { props: { tasks } } = this;
+    // console.log(tasks);
+    let taskList =  Array();
+    for (let i=0; i < tasks.length; i++){
+      let item = tasks[i];
+      if (item.status == "finished")
+        taskList.push(<FinishedTaskTow  index={i} item={item} setTask={this.props.setTask}
+                                pauseTask={this.props.pauseTask}
+                                laterTask={this.props.laterTask}
+                                finishTask={this.props.finishTask}
+                                key={i}/>)
+            }
 
     return (
         <Content padder>
-          <Text></Text>
+          {taskList}
         </Content>
     );
   }

@@ -66,7 +66,7 @@ class Login extends Component {
     return (
       <ScrollView ref={'loginFormC'} {...this.props}>
         <View full>
-          <LoginButton
+          <LoginButton full
             publishPermissions={["publish_actions"]}
             onLoginFinished={
               (error, result) => {

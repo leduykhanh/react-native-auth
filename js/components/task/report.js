@@ -6,9 +6,10 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Bod
 
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
-import LaterTaskRow from './laterTaskRow'
+import LaterTaskTow from './laterTaskRow'
+import Calendar from 'react-native-calendar'
 
-class LaterTask extends Component {
+class Report extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -20,18 +21,12 @@ class LaterTask extends Component {
   render() {
     const { props: { tasks } } = this;
         let taskList =  Array();
-    for (let i=0; i < tasks.length; i++){
+    for (let i=0; i < tasks.length; i++) {
       let item = tasks[i];
-      if (item.status == "later")
-        taskList.push(<LaterTaskRow  index={i} item={item} setTask={this.props.setTask}
-                                pauseTask={this.props.pauseTask}
-                                laterTask={this.props.laterTask}
-                                finishTask={this.props.finishTask}
-                                key={i}/>)
-            }
+    }
     return (
         <Content padder>
-          {taskList}
+          <Calendar />
         </Content>
     );
   }
@@ -48,4 +43,5 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, bindAction)(LaterTask);
+export default connect(mapStateToProps, bindAction)(Report);
+
