@@ -23,7 +23,7 @@ import { setUser } from '../../actions/user';
 import { connect } from 'react-redux';
 import { Actions,ActionConst } from 'react-native-router-flux';
 import { Container, Content, Item, Input, Button, Icon, View } from 'native-base';
-import {LoginButton,LoginManager} from 'react-native-fbsdk';
+import {LoginButton,LoginManager,AccessToken} from 'react-native-fbsdk';
 
 class Login extends Component {
   constructor(props) {
@@ -38,11 +38,21 @@ class Login extends Component {
       loading: false
     };
   }
+    goToTaskList(){
+        Actions.home({type:ActionConst.RESET});
+        Actions.taskList();
+    }
   componentWillMount(){
     if(this.props.name){
-      Actions.home({type:ActionConst.RESET});
-      Actions.taskList();
+      this.goToTaskList();
     }
+    AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    if(data.accessToken){
+                      this.goToTaskList();
+                    }
+                  }
+                )
     LoginManager.logInWithReadPermissions(['public_profile']).then(
       function(result) {
         if (result.isCancelled) {
@@ -65,7 +75,10 @@ class Login extends Component {
 
     return (
       <ScrollView ref={'loginFormC'} {...this.props}>
-        <View full>
+        <TouchableOpacity activeOpacity={1} style={styles.titleContainer}>
+          <Text style={styles.title}>{'LOGIN'}</Text>
+        </TouchableOpacity>
+        <View  style={styles.titleContainer} full>
           <LoginButton full
             publishPermissions={["publish_actions"]}
             onLoginFinished={
@@ -75,15 +88,13 @@ class Login extends Component {
                 } else if (result.isCancelled) {
                   alert("Login was cancelled");
                 } else {
+                this.goToTaskList();
                   alert("Login was successful with permissions: " + result.grantedPermissions)
                 }
               }
             }
             onLogoutFinished={() => alert("User logged out")}/>
           </View>
-        <TouchableOpacity activeOpacity={1} style={styles.titleContainer}>
-          <Text style={styles.title}>{'LOGIN'}</Text>
-        </TouchableOpacity>
         <Item key={'username'} style={styles.inputContainer}>
           <Icon active name="person" />
           <Input {...fields[0]} onFocus={() => this.onFocus({...fields[0]})} onChangeText={(text) => this.state.data.username = text} />

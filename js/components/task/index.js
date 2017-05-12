@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions ,ActionConst} from 'react-native-router-flux';
-import ActionButton from 'react-native-action-button';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body } from 'native-base';
 
 import { openDrawer } from '../../actions/drawer';
@@ -54,10 +53,7 @@ class TaskList extends Component {
           {taskList.map(function(item,i){
               return item;
             })}
-            <ActionButton
-              buttonColor="rgba(231,76,60,1)"
-              onPress={() => { Actions.newTask()}}
-            />
+
         </Content>
 
 

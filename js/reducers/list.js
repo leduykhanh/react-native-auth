@@ -12,7 +12,7 @@ export const initialState = {
     'History',
     'Report',
   ],
-  selectedIndex: undefined,
+  selectedIndex: 0,//0: TaskList
 };
 
 export default function (state:State = initialState, action:Action): State {

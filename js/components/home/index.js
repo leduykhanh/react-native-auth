@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right,Badge } from 'native-base';
-import { Grid, Row } from 'react-native-easy-grid';
+import ActionButton from 'react-native-action-button';
 
 import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
@@ -51,6 +51,10 @@ class Home extends Component {
         <Content>
           {this.props.children.map((scene,i) => React.createElement(scene.component,{key:i}))}
         </Content>
+        <ActionButton
+              buttonColor="rgba(231,76,60,1)"
+              onPress={() => { Actions.newTask()}}
+            />
       </Container>
     );
   }
