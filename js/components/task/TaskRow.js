@@ -2,7 +2,8 @@
  * Created by User on 4/28/2017.
  */
 import React, { Component } from 'react';
-import { Container, Content, Item, Input, Icon, View,Text,Button ,Badge} from 'native-base';
+import { Container, Content, Item, Input, Icon, Text,Button ,Badge} from 'native-base';
+import {View} from 'react-native'
 import {
   ToastAndroid
 
