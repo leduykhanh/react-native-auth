@@ -48,7 +48,7 @@ class Login extends Component {
     }
     AccessToken.getCurrentAccessToken().then(
                   (data) => {
-                    if(data.accessToken){
+                    if(data && data.accessToken){
                       this.goToTaskList();
                     }
                   }

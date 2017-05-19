@@ -11,12 +11,12 @@ export type State = {
 export const initialState = {
 
   tasks:[
-      {name: "Task 1", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'later',timeSpent:0},
-      {name: "Task 2", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'finished',timeSpent:0},
-      {name: "Task 3", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
-      {name: "Task 4", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'finished',timeSpent:0},
-      {name: "Task 5", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
-      {name: "Task 6", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
+      // {name: "Task 1", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'later',timeSpent:0},
+      // {name: "Task 2", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'finished',timeSpent:0},
+      // {name: "Task 3", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
+      // {name: "Task 4", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'finished',timeSpent:0},
+      // {name: "Task 5", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
+      // {name: "Task 6", startTime: new Date("2017/01/01 12:00"), endTime: new Date("2017/01/02 12:00"), status:'off',timeSpent:0},
 
   ]
 };

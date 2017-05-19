@@ -9,12 +9,8 @@ import Datastore from 'react-native-local-mongodb';
 import * as asyncInitialState from 'redux-async-initial-state';
 var db = new Datastore({ filename: 'asyncStorageKey', autoload: true });
 const persistToMongo = (state) => {
-  db.remove({}, { multi: true }, function (err, numRemoved) {
-});
-  db.insert(state.task.tasks, function (err, newDoc) {   // Callback is optional
-  // newDoc is the newly inserted document, including its _id
-  // newDoc has no key called notToBeSaved since its value was undefined
-});
+  // db.remove({}, { multi: true }, function (err, numRemoved) {});
+  db.insert(state.task.tasks, function (err, newDoc) {  });
 }
 const reducers = combineReducers({
   // state: (state = {}) => state,
@@ -41,4 +37,4 @@ const reducer = asyncInitialState.outerReducer(combineReducers({
   asyncInitialState: asyncInitialState.innerReducer,
 }));
 
-export default reducer;
+export default finalReducer;
